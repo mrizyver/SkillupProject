@@ -1,5 +1,6 @@
 package com.project.training.leetcode
 
+import com.project.training.leetcode.MedianOfTwoSortedArrays.findMedianSortedArrays
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -26,6 +27,18 @@ class MedianOfTwoSortedArraysTest {
             findMedianSortedArrays(
                 intArrayOf(1, 3),
                 intArrayOf(2)
+            ),
+            DELTA
+        )
+    }
+
+    @Test
+    fun testZeros() {
+        assertEquals(
+            0.0,
+            findMedianSortedArrays(
+                intArrayOf(0, 0),
+                intArrayOf(0, 0)
             ),
             DELTA
         )
