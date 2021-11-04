@@ -32,7 +32,12 @@ object MedianOfTwoSortedArrays {
                 left[leftIndex] < right[rightIndex] -> (right[rightIndex] + left[leftIndex + 1]) / 2.0
                 else -> (left[leftIndex] + min(left[leftIndex + 1], right[rightIndex + 1])) / 2.0
             }
-        } else right[rightIndex].toDouble()
+        } else {
+            when{
+                left[leftIndex] < right[rightIndex] -> right[rightIndex] * 1.0
+                else -> left[leftIndex] * 1.0
+            }
+        }
     }
 
     fun getMedian(array: IntArray): Double {
