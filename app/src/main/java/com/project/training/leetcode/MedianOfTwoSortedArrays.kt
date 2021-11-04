@@ -29,8 +29,8 @@ object MedianOfTwoSortedArrays {
             when {
                 rightIndex < 0 -> (left[leftIndex] + right.first()) / 2.0
                 leftIndex < 0 -> (right[rightIndex] + left.last()) / 2.0
-                left[leftIndex] < right[rightIndex] -> (right[rightIndex] + left[leftIndex + 1]) / 2.0
-                else -> (left[leftIndex] + min(left[leftIndex + 1], right[rightIndex + 1])) / 2.0
+                left[leftIndex] < right[rightIndex] -> (right[rightIndex] + (left.getOrNull(leftIndex + 1) ?: right[rightIndex + 1])) / 2.0
+                else -> (left[leftIndex] + min(left[leftIndex + 1], right.getOrNull(rightIndex + 1) ?: left[leftIndex + 1])) / 2.0
             }
         } else {
             when {
