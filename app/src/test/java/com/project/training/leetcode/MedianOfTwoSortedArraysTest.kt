@@ -127,4 +127,16 @@ class MedianOfTwoSortedArraysTest {
             DELTA
         )
     }
+
+    @Test
+    fun `test 3 to -2, -1`() {
+        assertEquals(
+            -1.0,
+            findMedianSortedArrays(
+                intArrayOf(3),
+                intArrayOf(-2, -1)
+            ),
+            DELTA
+        )
+    }
 }

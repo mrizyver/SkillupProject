@@ -33,7 +33,9 @@ object MedianOfTwoSortedArrays {
                 else -> (left[leftIndex] + min(left[leftIndex + 1], right[rightIndex + 1])) / 2.0
             }
         } else {
-            when{
+            when {
+                rightIndex < 0 -> left[leftIndex] * 1.0
+                leftIndex < 0 -> right[rightIndex] * 1.0
                 left[leftIndex] < right[rightIndex] -> right[rightIndex] * 1.0
                 else -> left[leftIndex] * 1.0
             }
