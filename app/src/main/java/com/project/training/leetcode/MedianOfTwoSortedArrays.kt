@@ -18,7 +18,7 @@ object MedianOfTwoSortedArrays {
                 temp = leftIndex
                 leftIndex += ceil(((halfLength - 1) - leftIndex) / 2.0).toInt()
                 rightIndex -= leftIndex - temp
-            } else if (right.lastIndex != rightIndex && right[rightIndex + 1] < left[leftIndex]) {
+            } else if (leftIndex >= 0 && right.lastIndex != rightIndex && right[rightIndex + 1] < left[leftIndex]) {
                 temp = rightIndex
                 rightIndex += ceil(((halfLength - 1) - rightIndex) / 2.0).toInt()
                 leftIndex -= rightIndex - temp
@@ -27,10 +27,10 @@ object MedianOfTwoSortedArrays {
         }
         return if (length.isEven()) {
             when {
-                rightIndex < 0 -> (left[leftIndex] + right.first()) / 2.0
-                leftIndex < 0 -> (right[rightIndex] + left.last()) / 2.0
-                left[leftIndex] < right[rightIndex] -> (right[rightIndex] + (left.getOrNull(leftIndex + 1) ?: right[rightIndex + 1])) / 2.0
-                else -> (left[leftIndex] + min(left[leftIndex + 1], right.getOrNull(rightIndex + 1) ?: left[leftIndex + 1])) / 2.0
+                rightIndex < 0 -> (left[leftIndex] + min(right.first(), left.getOrNull(leftIndex + 1) ?: right.first())) / 2.0
+                leftIndex < 0 -> (right[rightIndex] + min(left.last(), right.getOrNull(rightIndex + 1) ?: left.first())) / 2.0
+                left[leftIndex] < right[rightIndex] -> (right[rightIndex] + min((left.getOrNull(leftIndex + 1) ?: right[rightIndex + 1]), right.getOrNull(rightIndex + 1) ?: left.last())) / 2.0
+                else -> (left[leftIndex] + min(left.getOrNull(leftIndex + 1) ?: right[rightIndex + 1], right.getOrNull(rightIndex + 1) ?: left[leftIndex + 1])) / 2.0
             }
         } else {
             when {
