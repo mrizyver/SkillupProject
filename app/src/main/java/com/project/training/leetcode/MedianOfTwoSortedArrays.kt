@@ -3,11 +3,16 @@ package com.project.training.leetcode
 import kotlin.math.*
 
 object MedianOfTwoSortedArrays {
+    interface ArraysSortProcessor {
+        fun initIndices()
+    }
     fun findMedianSortedArrays(left: IntArray, right: IntArray): Double {
         if (left.isEmpty() && right.isEmpty()) return 0.0
         if (left.isEmpty()) return getMedian(right)
         if (right.isEmpty()) return getMedian(left)
         val length = left.size + right.size
+        val processor = ArraysSortProcessor(left, right)
+        processor.initIndices()
         val halfLength = ceil(length / 2.0).toInt()
         var rightIndex = min((halfLength / 2) - 1, right.lastIndex)
         var leftIndex = min((halfLength - 2) - rightIndex, left.lastIndex)
@@ -49,4 +54,19 @@ object MedianOfTwoSortedArrays {
 
     fun Int.isOdd() = this % 2 == 1
     fun Int.isEven() = this % 2 == 0
+
+    fun ArraysSortProcessor(left: IntArray, right: IntArray): ArraysSortProcessor =
+        if ((left.size + right.size) % 2 == 1) OddArraysSortProcessor(left, right)
+        else EvenArraysSortProcessor(left, right)
+
+    class EvenArraysSortProcessor(val left: IntArray, val right: IntArray) : ArraysSortProcessor{
+        override fun initIndices() {
+            TODO("Not yet implemented")
+        }
+    }
+    class OddArraysSortProcessor(val left: IntArray, val right: IntArray) : ArraysSortProcessor{
+        override fun initIndices() {
+            TODO("Not yet implemented")
+        }
+    }
 }
