@@ -21,3 +21,18 @@ object TrivialReverseInteger {
         return (sign * output).toInt()
     }
 }
+
+object EfficientReverseInteger {
+    fun reverse(x: Int): Int {
+        var input: Int = x
+        var output = 0
+        while (input != 0) {
+            val pop = input % 10
+            input /= 10
+            if (output > Int.MAX_VALUE / 10 || output == Int.MAX_VALUE / 10 && pop > 7) return 0
+            if (output < Int.MIN_VALUE / 10 || output == Int.MIN_VALUE / 10 && pop < -8) return 0
+            output = output * 10 + pop
+        }
+        return output
+    }
+}
