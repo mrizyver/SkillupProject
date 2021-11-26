@@ -1,30 +1,31 @@
 package com.project.training.leetcode
 
+import kotlin.math.min
+
+
 /**
  * @see "https://leetcode.com/problems/longest-palindromic-substring/'
+ * There is an example of how to achieve better performance
+ * https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
  */
 object LongestPalindromicSubstring {
-    fun longestPalindrome(s: String): String {
-        if (s.isEmpty()) return ""
-        var palindrome = s.substring(0, 1)
-        for (i in s.indices) {
-            var leftIndex = i
-            var rightIndex = i
-            do {
-                if (rightIndex + 1 < s.length && s[leftIndex] == s[rightIndex + 1]) {
-                    palindrome = longest(s.substring(leftIndex, rightIndex + 2), palindrome)
+    fun longestPalindrome(str: String): String {
+        if (str.isEmpty()) return ""
+        var palindrome = str.substring(0, 1)
+        for (i in str.indices) {
+            val len = min(str.lastIndex - i, i)
+            for (l in 0..len) {
+                if (i + l + 1 < str.length && str[i - l] == str[i + l + 1]) {
+                    palindrome = longest(str.substring(i - l, i + l + 2), palindrome)
                 } else break
-            } while (--leftIndex > -1 && ++rightIndex < s.length)
-            leftIndex = i
-            rightIndex = i
-            do {
-                if (s[leftIndex] == s[rightIndex]) {
-                    palindrome = longest(s.substring(leftIndex, rightIndex + 1), palindrome)
+            }
+            for (l in 1..len){
+                if (str[i - l] == str[i + l]) {
+                    palindrome = longest(str.substring(i - l, i + l + 1), palindrome)
                 } else break
-            } while (--leftIndex > -1 && ++rightIndex < s.length)
+            }
         }
         return palindrome
     }
-
     fun longest(s1: String, s2: String): String = if (s1.length > s2.length) s1 else s2
 }
