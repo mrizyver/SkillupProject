@@ -39,10 +39,10 @@ object HeapSort {
         }
     }
 
-    fun left(index: Int) : Int = 2 * index
-    fun raight(index: Int) : Int = 2 * index + 1
+    fun left(index: Int): Int = 2 * index
+    fun raight(index: Int): Int = 2 * index + 1
 
-    fun IntArray.swap(i: Int, j :Int){
+    fun IntArray.swap(i: Int, j: Int) {
         val temp = get(i)
         set(i, get(j))
         set(j, temp)

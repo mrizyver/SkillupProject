@@ -1,6 +1,6 @@
 package com.project.training.leetcode
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class LongestPalindromicSubstringTest {
@@ -33,6 +33,7 @@ class LongestPalindromicSubstringTest {
     fun `test abbabb`() {
         assertEquals("abba", LongestPalindromicSubstring.longestPalindrome("abbab"))
     }
+
     @Test
     fun `test aacabdkacaa`() {
         assertEquals("aca", LongestPalindromicSubstring.longestPalindrome("aacabdkacaa"))

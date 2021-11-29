@@ -19,7 +19,7 @@ object LongestPalindromicSubstring {
                     palindrome = longest(str.substring(i - l, i + l + 2), palindrome)
                 } else break
             }
-            for (l in 1..len){
+            for (l in 1..len) {
                 if (str[i - l] == str[i + l]) {
                     palindrome = longest(str.substring(i - l, i + l + 1), palindrome)
                 } else break
@@ -27,5 +27,6 @@ object LongestPalindromicSubstring {
         }
         return palindrome
     }
+
     fun longest(s1: String, s2: String): String = if (s1.length > s2.length) s1 else s2
 }
