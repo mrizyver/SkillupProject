@@ -9,7 +9,11 @@ class QuickSortTest{
     fun `test 3, 1, 2, 3, 1, 2, 3`() {
         assertArrayEquals(
             intArrayOf(1, 1, 2, 2, 3, 3, 3),
-            QuickSort.sort(intArrayOf(3, 1, 2, 3, 1, 2, 3))
+            SimpleQuickSort.sort(intArrayOf(3, 1, 2, 3, 1, 2, 3))
+        )
+        assertArrayEquals(
+            intArrayOf(1, 1, 2, 2, 3, 3, 3),
+            HoareQuickSort.sort(intArrayOf(3, 1, 2, 3, 1, 2, 3))
         )
     }
 
@@ -17,7 +21,11 @@ class QuickSortTest{
     fun `test 1, 2, 3`() {
         assertArrayEquals(
             intArrayOf(1, 2, 3),
-            QuickSort.sort(intArrayOf(3, 1, 2))
+            SimpleQuickSort.sort(intArrayOf(3, 1, 2))
+        )
+        assertArrayEquals(
+            intArrayOf(1, 2, 3),
+            HoareQuickSort.sort(intArrayOf(3, 1, 2))
         )
     }
 
@@ -25,7 +33,11 @@ class QuickSortTest{
     fun `test 3, 1`() {
         assertArrayEquals(
             intArrayOf(1, 3),
-            QuickSort.sort(intArrayOf(3, 1))
+            SimpleQuickSort.sort(intArrayOf(3, 1))
+        )
+        assertArrayEquals(
+            intArrayOf(1, 3),
+            HoareQuickSort.sort(intArrayOf(3, 1))
         )
     }
 }
