@@ -1,5 +1,7 @@
 package com.project.training.book
 
+import com.project.training.util.swap
+
 object HeapSort {
     /**
      * running time is O(n lg(n))
@@ -41,10 +43,4 @@ object HeapSort {
 
     fun left(index: Int): Int = 2 * index
     fun raight(index: Int): Int = 2 * index + 1
-
-    fun IntArray.swap(i: Int, j: Int) {
-        val temp = get(i)
-        set(i, get(j))
-        set(j, temp)
-    }
 }
